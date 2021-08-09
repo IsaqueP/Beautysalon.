@@ -20,18 +20,19 @@ for(const link of links){
 
 
 // mudar o header da página quando der scroll
- const header = document.querySelector('#header')
- const navHeight = header.offsetHeight
+ function changeHeaderWhenScroll(){
+    const header = document.querySelector('#header')
+    const navHeight = header.offsetHeight
 
- window.addEventListener('scroll', function(){
-     if(window.scrollY >= navHeight){
+    if(window.scrollY >= navHeight){
         // scroll é maior que a altura do header
         header.classList.add('scroll')
      }else{
         //  menor que a altura do header
         header.classList.remove('scroll')
      }
- })
+ }
+
 
 
 //  testimonials carousel slider swiper
@@ -43,6 +44,8 @@ const swiper = new Swiper('.swiper-container',{
     mousewhell: true,
     keyboard: true
 })
+
+
 
 // Mostrar elementos quando der scroll na página
 const scrollReveal = ScrollReveal({
@@ -58,4 +61,28 @@ scrollReveal.reveal(
     #services header, #services .card,
     #testimonials header, #testimonials .testimonials,
     #contact .text, #contact .links
-    `,{interval: 100})
+    footer .brand footer .social
+    `,
+    {interval: 100}
+)
+
+
+/*Botão voltar para o topo*/
+function backToTop(){
+    const backToTopButton = document.querySelector('.back-to-top')
+
+    if(window.scrollY >= 700){
+        backToTopButton.classList.add('show')
+    } else {
+        backToTopButton.classList.remove('show')
+    }
+}
+
+
+
+
+
+window.addEventListener('scroll', function(){
+    changeHeaderWhenScroll()
+    backToTop()
+ })
