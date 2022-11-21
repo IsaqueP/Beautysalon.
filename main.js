@@ -70,7 +70,7 @@ scrollReveal.reveal(
     #contact .text, #contact .links
     footer .brand footer .social
     `,
-    {interval: 100}
+    {interval: 50}
 )
 
 
